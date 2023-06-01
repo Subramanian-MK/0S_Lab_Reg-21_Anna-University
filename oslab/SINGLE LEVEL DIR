@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+int master,s[20],i,j,k;
+char f[20][20][20],d[20][20];
+printf("Enter number of directories: ");
+scanf("%d",&master);
+printf("Enter names of directories : ");
+for(i=0;i<master;i++)
+scanf("%s",d[i]);
+for(i=0;i<master;i++)
+{
+printf("Enter number of files in directory %d :",i+1);
+scanf("%d",&s[i]);
+}
+for(i=0;i<master;i++)
+{
+printf("Enter names of files in directory %d :",i+1);
+for(j=0;j<s[i];j++)
+{
+scanf("%s",f[i][j]);
+for(k=0;k<j;k++)
+{
+if(strcmp(f[i][j],f[i][k])==0)
+{
+printf("File Exists...");
+printf("Enter new file name");
+scanf("%s",f[i][j]);
+}
+}
+}
+printf("\n");
+}
+printf("Directory\t Size\t File name\n");
+printf(" *************************\n");
+for(i=0;i<master;i++)
+{
+printf("%s\t\t%2d\t",d[i],s[i]);
+for(j=0;j<s[i];j++)
+printf("%s\t\t",f[i][j]);
+printf("\n");
+}
+printf("\t\n");
+}

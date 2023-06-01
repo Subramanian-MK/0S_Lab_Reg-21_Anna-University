@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int size, m, n, pgno, pagetable[3] = {5, 6, 7}, i, frameno, ra, ofs;
+    double m1;
+    printf("Enter process size (in KB, maximum 12KB): ");
+    scanf("%d", &size);
+    m1 = size / 4.0;
+    n = ceil(m1);
+    printf("Total number of pages: %d\n", n);
+    printf("Enter relative address (in hexadecimal): ");
+    scanf("%x", &ra);
+    pgno = ra / 1000;
+    ofs = ra % 1000;
+    printf("Page number = %d\n", pgno);
+    printf("Page table:\n");
+    for(i = 0; i < n; i++)
+    {
+        printf("%d[%d]\n", i, pagetable[i]);
+    }
+    frameno = pagetable[pgno];
+    printf("Physical address: %d%d\n", frameno, ofs);
+    return 0;
+}
